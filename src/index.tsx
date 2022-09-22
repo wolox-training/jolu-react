@@ -6,8 +6,6 @@ import 'scss/application.scss';
 import 'config/i18n';
 import App from 'components/App';
 
-// import SingUp from 'screens/Dashboard/screens/SignUp';
-
 import reportWebVitals from './reportWebVitals';
 
 const rootElement = document.getElementById('root');

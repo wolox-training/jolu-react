@@ -11,8 +11,12 @@ interface Props {
 function Container({ children }: Props) {
   return (
     <div className={styles.container}>
-      <img src={LogoWolox} className={styles.logo} alt="Logo wolox" />
-      {children}
+      <article className={styles.card}>
+        <div className={styles.logoWolox}>
+          <img src={LogoWolox} className={styles.logo} alt="Logo wolox" />
+        </div>
+        {children}
+      </article>
     </div>
   );
 }
