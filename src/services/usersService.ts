@@ -1,9 +1,30 @@
-import api from 'config/api';
-import { DataRegister } from 'utils/types';
+import { ApiResponse } from 'apisauce';
 
-export async function registerService(body: DataRegister) {
-  await api
-    .post('/users', body)
-    .then((response) => console.log(response.data))
-    .catch((error) => console.error('error', error));
+import api from 'config/api';
+import { ServiceResponse, User, LoginResponse } from 'utils/types';
+import { SignUpResponse } from 'utils/signUpResponse';
+
+const userPath = '/users';
+
+export async function registerService(user: User) {
+  const res = await api.post<ServiceResponse<SignUpResponse>>(userPath, user);
+  if (res.ok) {
+    return res;
+  }
+  throw res.data;
+}
+
+export async function login(user: User) {
+  const res = await api.post<ServiceResponse<LoginResponse>>(`${userPath}/sign_in`, user);
+  if (res.ok) {
+    return res;
+  }
+  throw res.data;
+}
+
+function idSession(response: ApiResponse<User>) {
+  const { headers } = response;
+  const { uid, client, 'access-token': accessToken } = headers;
+
+  return { uid, client, 'access-token': accessToken };
 }
