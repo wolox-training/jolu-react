@@ -9,6 +9,7 @@ export interface User {
   [key: string]: any;
 }
 
+/* eslint-disable-next-line @typescript-eslint/no-empty-function, no-empty-function */
 interface Errors {
   [key: string]: Array<string>;
   full_messages: Array<string>;
@@ -18,15 +19,8 @@ export interface ServiceResponse<T> {
   data: T;
   errors: Errors;
 }
-
+/* eslint-disable-next-line @typescript-eslint/no-empty-function, no-empty-function */
 export interface LoginResponse {
-  allow_password_change: string;
   email: string;
-  first_name: string;
-  id: number;
-  last_name: string;
-  locale: string;
-  provider: string;
-  uid: string;
-  client: string;
+  password: string;
 }

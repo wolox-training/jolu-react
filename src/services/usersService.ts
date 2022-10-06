@@ -1,5 +1,3 @@
-import { ApiResponse } from 'apisauce';
-
 import api from 'config/api';
 import { ServiceResponse, User, LoginResponse } from 'utils/types';
 import { SignUpResponse } from 'utils/signUpResponse';
@@ -14,17 +12,16 @@ export async function registerService(user: User) {
   throw res.data;
 }
 
-export async function login(user: User) {
+export async function login(user: LoginResponse) {
   const res = await api.post<ServiceResponse<LoginResponse>>(`${userPath}/sign_in`, user);
+  const userInfo = {
+    'acces-token': res.headers?.['acces-token'],
+    client: res.headers?.client,
+    uid: res.headers?.uid
+  };
+  localStorage.setItem('userAccess', JSON.stringify(userInfo));
   if (res.ok) {
     return res;
   }
   throw res.data;
-}
-
-function idSession(response: ApiResponse<User>) {
-  const { headers } = response;
-  const { uid, client, 'access-token': accessToken } = headers;
-
-  return { uid, client, 'access-token': accessToken };
 }

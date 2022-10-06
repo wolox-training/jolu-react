@@ -6,26 +6,31 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 
+import { LoginResponse, User } from 'utils/types';
 import Container from 'components/Container';
 import Language from 'components/lenguage';
-import { User } from 'utils/types';
 import MessageUser from 'components/MessageUser';
 import { login } from 'services/usersService';
 
 import styles from './styles.module.scss';
-
+/* eslint-disable @typescript-eslint/naming-convention */
 function Login() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const minPassword = 8;
+  const minPassword = 6;
   const maxPassword = 16;
+  /* eslint-disable-next-line @typescript-eslint/no-empty-function */
   const defaultValues = {
     email: '',
+    /* eslint-disable-next-line @typescript-eslint/no-empty-function  */
     first_name: '',
+    /* eslint-disable-next-line @typescript-eslint/no-empty-function  */
     last_name: '',
     password: '',
+    /* eslint-disable-next-line @typescript-eslint/no-empty-function  */
     password_confirmation: ''
   };
   const validationSchema = Yup.object().shape({
@@ -45,8 +50,8 @@ function Login() {
     resolver: yupResolver(validationSchema)
   });
 
-  const { mutate, isLoading, isSuccess, isError, error } = useMutation((user: User) => login(user), {
-    onSuccess: (res) => {
+  const { mutate, isLoading, isSuccess, isError, error } = useMutation((user: LoginResponse) => login(user), {
+    onSuccess: () => {
       navigate('/home');
     },
     onError: (err: any) => {
@@ -65,20 +70,23 @@ function Login() {
         <div>
           <label className={styles.label}>{t('SignUp:email')}</label>
           <input {...register('email')} className={styles.input} />
-          {errors.email && <span>This field is required</span>}
+          {errors.email && <span>{t('SignUp:field')}</span>}
         </div>
         <div>
           <label className={styles.label}>{t('SignUp:password')}</label>
           <input {...register('password')} className={styles.input} type="password" />
-          {errors.password && <span>This field is required</span>}
+          {errors.password && <span>{t('SignUp:field')}</span>}
         </div>
-        <button type="submit" className={styles.buttonSingUp}>
-          {t('SignUp:Sing Up')} loading={isLoading}
+
+        <button type="submit" className={styles.buttonLogin}>
+          {isLoading ? 'Loading...' : ' '} {t('SignUp:Login')}
         </button>
         <div className={styles.dividingLine} />
-        <button type="submit" className={styles.buttonLogin}>
-          {t('SignUp:Login')}
-        </button>
+        <Link to="sign_up">
+          <button type="submit" className={styles.buttonSingUp}>
+            {t('SignUp:Sing Up')}
+          </button>
+        </Link>
       </form>
       <Language />
       {isError && error?.errors && <MessageUser type="error" messages={error.errors} />}
