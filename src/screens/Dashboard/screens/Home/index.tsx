@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { actionCreators as authActions } from 'contexts/UserContext/reducer';
 import { useDispatch as useUserDispatch } from 'contexts/UserContext';
 import { logout, removeCurrentUserToken } from 'services/AuthService';
+import NavBar from 'components/NavBar';
 
 import styles from './styles.module.scss';
 import { withContextProvider, useSelector } from './context';
@@ -26,7 +27,7 @@ function Home() {
 
   return (
     <div className={styles.app}>
-      <nav>hola</nav>
+      <NavBar />
     </div>
   );
 }

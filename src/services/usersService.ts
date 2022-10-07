@@ -2,6 +2,8 @@ import api from 'config/api';
 import { ServiceResponse, User, LoginResponse } from 'utils/types';
 import { SignUpResponse } from 'utils/signUpResponse';
 
+import LocalStorageService from './LocalStorageService';
+
 const userPath = '/users';
 
 export async function registerService(user: User) {
@@ -24,4 +26,8 @@ export async function login(user: LoginResponse) {
     return res;
   }
   throw res.data;
+}
+
+export function logoutSession() {
+  LocalStorageService.removeValue('userAccess');
 }
