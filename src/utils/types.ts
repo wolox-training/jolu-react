@@ -24,3 +24,5 @@ export interface LoginResponse {
   email: string;
   password: string;
 }
+
+/* eslint-disable-next-line @typescript-eslint/no-empty-function, no-empty-function */

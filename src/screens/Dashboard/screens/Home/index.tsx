@@ -1,29 +1,31 @@
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
-import { actionCreators as authActions } from 'contexts/UserContext/reducer';
-import { useDispatch as useUserDispatch } from 'contexts/UserContext';
-import { logout, removeCurrentUserToken } from 'services/AuthService';
+// import { actionCreators as authActions } from 'contexts/UserContext/reducer';
+// import { useDispatch as useUserDispatch } from 'contexts/UserContext';
+// import { logout, removeCurrentUserToken } from 'services/AuthService';
 import NavBar from 'components/NavBar';
+// import LocalStorageService from 'services/LocalStorageService';
+// import { setHeaders } from 'config/api';
 
 import styles from './styles.module.scss';
-import { withContextProvider, useSelector } from './context';
+import { withContextProvider } from './context';
 
 function Home() {
-  const { t, i18n } = useTranslation();
+  // const { t, i18n } = useTranslation();
 
   // Example of how to use these custom hooks
-  const tech = useSelector((state) => state.tech);
-  const userDispatch = useUserDispatch();
+  // const tech = useSelector((state) => state.tech);
+  // const userDispatch = useUserDispatch();
 
-  const handleLogout = async () => {
+  /* const handleLogout = async () => {
     await logout();
     userDispatch(authActions.resetUser());
     removeCurrentUserToken();
-  };
+  };*/
 
-  const handleChangeLanguage = () => {
+  /* const handleChangeLanguage = () => {
     i18n.changeLanguage(i18n.language === 'es' ? 'en' : 'es');
-  };
+  };*/
 
   return (
     <div className={styles.app}>

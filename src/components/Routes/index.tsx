@@ -5,15 +5,15 @@ import Dashboard from 'screens/Dashboard';
 import SignUp from 'screens/Dashboard/screens/SignUp';
 import Login from 'screens/Dashboard/screens/Login';
 import Home from 'screens/Dashboard/screens/Home';
+import PrivateRoute from 'components/PrivateRoute';
 
 import Suspense from '../Suspense';
 
 import { ROUTES } from './constants';
 import styles from './styles.module.scss';
 
-function Routes() {
+function Routes(): JSX.Element {
   const user = useSelector((state) => state.user);
-
   return (
     <Router>
       <div className={styles.container}>
@@ -22,16 +22,23 @@ function Routes() {
             <Route path="/" element={<Dashboard />}>
               <Route path="sign_up" element={<SignUp />} />
               <Route path="/" element={<Login />} />
-              <Route path="home" element={<Home />} />
-              {ROUTES.map(({ redirectTo, path, element, ...config }) => (
-                <Route
-                  key={path}
-                  path={path}
-                  element={redirectTo?.(user) ? <Navigate to={redirectTo?.(user) as string} /> : element}
-                  {...config}
-                />
-              ))}
+              <Route
+                path="/home"
+                element={
+                  <PrivateRoute>
+                    <Home />
+                  </PrivateRoute>
+                }
+              />
             </Route>
+            {ROUTES.map(({ redirectTo, path, element, ...config }) => (
+              <Route
+                key={path}
+                path={path}
+                element={redirectTo?.(user) ? <Navigate to={redirectTo?.(user) as string} /> : element}
+                {...config}
+              />
+            ))}
           </RoutesSwitch>
         </Suspense>
       </div>
