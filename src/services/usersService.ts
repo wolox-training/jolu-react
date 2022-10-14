@@ -2,8 +2,6 @@ import api from 'config/api';
 import { ServiceResponse, User, LoginResponse } from 'utils/types';
 import { SignUpResponse } from 'utils/signUpResponse';
 
-import LocalStorageService from './LocalStorageService';
-
 const userPath = '/users';
 
 export async function registerService(user: User) {
@@ -18,11 +16,11 @@ export async function login(user: LoginResponse) {
   const res = await api.post<ServiceResponse<LoginResponse>>(`${userPath}/sign_in`, user);
   const userInfo = {
     /* eslint-disable @typescript-eslint/naming-convention */
-    'acces-token': res.headers?.['acces-token'],
+    'access-token': res.headers?.['access-token'],
     client: res.headers?.client,
     uid: res.headers?.uid
   };
-  LocalStorageService.setValue('userAccess', JSON.stringify(userInfo));
+  localStorage.setItem('userAccess', JSON.stringify(userInfo));
   if (res.ok) {
     return res;
   }
@@ -30,10 +28,10 @@ export async function login(user: LoginResponse) {
 }
 
 export function logoutSession() {
-  LocalStorageService.removeValue('userAccess');
+  localStorage.removeItem('userAccess');
 }
 
 export function requiredAuth() {
-  const session = LocalStorageService.getValue('userAccess');
+  const session = localStorage.getItem('userAccess');
   return !!session;
 }
