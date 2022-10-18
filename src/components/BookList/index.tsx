@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 import { getBook } from 'services/bookService';
 
@@ -10,13 +11,14 @@ function BookList() {
   return (
     <div className={styles.list}>
       {isSuccess &&
-        /* eslint-disable @typescript-eslint/naming-convention */
-        data.page.map(({ id, title, author, image_url }: any) => (
-          <div className={styles.book} key={id}>
-            <img src={image_url} className={styles.cover} alt="BookList:logoAlt" />
-            <p className={styles.title}>{title}</p>
-            <span className={styles.author}>{author}</span>
-          </div>
+        data.page?.map(({ id, title, author, image_url }: any) => (
+          <Link to={`/books/${id}`}>
+            <div className={styles.book} key={id}>
+              <img src={image_url} className={styles.cover} alt="" />
+              <p className={styles.title}>{title}</p>
+              <span className={styles.author}>{author}</span>
+            </div>
+          </Link>
         ))}
     </div>
   );

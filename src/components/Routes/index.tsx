@@ -4,8 +4,7 @@ import { useSelector } from 'contexts/UserContext';
 import Dashboard from 'screens/Dashboard';
 import SignUp from 'screens/Dashboard/screens/SignUp';
 import Login from 'screens/Dashboard/screens/Login';
-import Home from 'screens/Dashboard/screens/Home';
-import PrivateRoute from 'components/PrivateRoute';
+import { Childrens, PrivateRoute } from 'components/PrivateRoute';
 
 import Suspense from '../Suspense';
 
@@ -23,14 +22,15 @@ function Routes(): JSX.Element {
               <Route path="sign_up" element={<SignUp />} />
               <Route path="/" element={<Login />} />
               <Route
-                path="/home"
+                path="/*"
                 element={
                   <PrivateRoute>
-                    <Home />
+                    <Childrens />
                   </PrivateRoute>
                 }
               />
             </Route>
+
             {ROUTES.map(({ redirectTo, path, element, ...config }) => (
               <Route
                 key={path}
