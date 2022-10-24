@@ -1,0 +1,23 @@
+.nav {
+  background-color: #FFF;
+  border-top: 6px solid #00ADEE;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
+  display: flex;
+  height: 70px;
+  justify-content: space-evenly;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.logo {
+  height: auto;
+  width: 212px;
+}
+
+.logout {
+  color: #000;
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 21px;
+}/*# sourceMappingURL=styles.module.css.map */
