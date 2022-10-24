@@ -2,6 +2,9 @@ import { BrowserRouter as Router, Routes as RoutesSwitch, Route, Navigate } from
 
 import { useSelector } from 'contexts/UserContext';
 import Dashboard from 'screens/Dashboard';
+import SignUp from 'screens/Dashboard/screens/SignUp';
+import Login from 'screens/Dashboard/screens/Login';
+import Home from 'screens/Dashboard/screens/Home';
 
 import Suspense from '../Suspense';
 
@@ -17,6 +20,9 @@ function Routes() {
         <Suspense>
           <RoutesSwitch>
             <Route path="/" element={<Dashboard />}>
+              <Route path="sign_up" element={<SignUp />} />
+              <Route path="/" element={<Login />} />
+              <Route path="home" element={<Home />} />
               {ROUTES.map(({ redirectTo, path, element, ...config }) => (
                 <Route
                   key={path}
