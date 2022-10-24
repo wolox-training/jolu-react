@@ -1,0 +1,65 @@
+@import '../../../../scss/variables/colors';
+
+.buttonSingUp {
+  background-color: $pear;
+  border: 2px solid $pear;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: $white;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+.buttonLogin {
+  background-color: $cultured;
+  border: 2px solid $pear;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: $pear;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+.dividingLine {
+  height: 2px;
+  width: auto;
+  background-color: $dark-gray;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+.form {
+  margin-bottom: 8px;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  justify-content: center;
+  margin: 0 24px;
+  width: auto;
+}
+
+.input {
+  background-color: $white;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: $black;
+  height: 32px;
+  padding: 16px 10px;
+  transition: 0.5s;
+  width: 100%;
+
+  &:focus {
+    border: 1px solid $vivid-cerulean;
+  }
+}
+
+.label {
+  color: $black;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 8px;
+}

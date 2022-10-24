@@ -1,0 +1,26 @@
+@import '../../scss/variables/colors';
+
+.card {
+  background-color: $wild-sand;
+  border-top: 8px solid $vivid-cerulean;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.container {
+  align-items: center;
+  background-color: $white;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.logo {
+  margin: 28px 44px 0;
+  height: 70px;
+  width: 212px;
+}

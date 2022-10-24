@@ -1,0 +1,44 @@
+.container {
+  align-items: center;
+  background-color: #F4F4F4;
+  border-top: 8px solid #00ADEE;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.form {
+  align-items: center;
+  background-color: #F4F4F4;
+  border-top: 8px solid #00ADEE;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.input {
+  background-color: #FFF;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: #000;
+  height: 32px;
+  padding: 16px 10px;
+  transition: 0.5s;
+  width: 100%;
+}
+.input:focus {
+  border: 1px solid #00ADEE;
+}
+
+.label {
+  color: #000;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+
+.logoWolox {
+  height: 70px;
+  margin-bottom: 16px;
+  width: 212px;
+}/*# sourceMappingURL=styles.module.css.map */
